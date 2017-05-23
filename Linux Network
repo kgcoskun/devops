@@ -1,0 +1,98 @@
+## CentOS için;
+#NIC IP Yapılandırması - Statik
+<Dosyanın Yolu> /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=static
+DNS1=172.22.28.100
+DNS2=172.22.28.200
+GATEWAY=172.22.28.1
+HOSTNAME=centos-srv.kgcoskun.com
+HWADDR=28:34:34:3K:2G:C1
+IPADDR=172.22.28.10
+NETMASK=255.255.255.0
+NAME="System eth0"
+UUID="8105c095-799b-4f5a-a445-c6d7c3681f07"
+
+#NIC IP Yapılandırması - DHCP
+<Dosyanın Yolu> /etc/sysconfig/network-scripts/ifcfg-eth0
+
+DEVICE=eth0
+TYPE=Ethernet
+ONBOOT=yes
+NM_CONTROLLED=yes
+BOOTPROTO=dhcp
+HWADDR=28:34:34:3K:2G:C1
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+IPV6_AUTOCONF=no
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=yes
+NAME="System eth0"
+
+## Ubuntu/Debian için;
+#NIC IP Yapılandırması - DHCP
+<Dosyanın Yolu> /etc/network/interfaces
+
+auto eth0
+iface eth0 inet dhcp
+auto lo
+iface lo inet loopback
+
+#NIC IP Yapılandırması - Statik
+<Dosyanın Yolu> /etc/network/interfaces
+
+auto eth0
+iface eth0 inet static 
+address 172.22.28.10
+netmask 255.255.255.0
+gateway 172.22.28.1
+dns-nameservers 172.22.28.100
+dns-nameservers 172.22.28.200
+
+## Aşağıdakiler Tüm Dağıtınlarda aynı
+
+#Networking
+<Dosyanın Yolu> /etc/sysconfig/network
+
+NETWORKING=yes
+HOSTNAME=centos-srv.kgcoskun.com
+
+
+#Host Dosyası
+<Dosyanın Yolu> /etc/hosts
+
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+#::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+172.22.28.10   centos-srv.kgcoskun.com centos-srv
+
+#Resolv Dosyası "DNS Server Ayarı"
+<Dosyanın Yolu> /etc/resolv.conf
+
+search kgcoskun.com
+nameserver 172.22.28.100
+nameserver 172.22.28.200
+
+/Ayrıca eğer ek DNS Server eklemek istenirse
+#OpenDNS
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+
+# OpenNICDNS
+nameserver 185.121.177.177
+nameserver 185.121.177.53
+
+#GoogleDNS
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+# ComodoDNS
+nameserver 8.26.56.26 
+nameserver 8.20.247.20
+
