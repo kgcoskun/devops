@@ -35,6 +35,7 @@ IPV6_AUTOCONF=no
 IPV6_DEFROUTE=yes
 IPV6_FAILURE_FATAL=yes
 NAME="System eth0"
+UUID="8105c095-799b-4f5a-a445-c6d7c3681f07"
 
 ## Ubuntu/Debian için;
 #NIC IP Yapılandırması - DHCP
