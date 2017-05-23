@@ -1,2 +1,1 @@
-# devops
-DevOPs SC
+KGC DevOPs Script & Project Config Files
